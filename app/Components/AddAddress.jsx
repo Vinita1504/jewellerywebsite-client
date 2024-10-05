@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaUser, FaPhone, FaMapMarkerAlt, FaHome, FaCity, FaFlag } from 'react-icons/fa';
+import AddressGrid from './AddressGrid';
 
-const AddressView = () => {
+const AddAddress = () => {
   const [addresses, setAddresses] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -89,31 +90,11 @@ const AddressView = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full mx-auto p-8 bg-surface rounded-xl shadow-2xl"
+      className="w-full mx-auto p-8 bg-surface rounded-xl "
     >
-      <h2 className="text-3xl font-bold mb-8 text-center text-onSurface">Address Management</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center text-onSurface">My Address</h2>
       
-      {addresses.map((address, index) => (
-        <div key={index} className="mb-6 p-4 bg-surfaceVariant rounded-lg">
-          <h3 className="font-semibold text-lg mb-2">{address.name}</h3>
-          <p>{address.flatNumber}, {address.streetLocality}, {address.area}</p>
-          <p>{address.city}, {address.state} - {address.pincode}</p>
-          <p>Phone: {address.phone}</p>
-          <p className="mt-2 text-accent">{address.addressType.toUpperCase()}</p>
-        </div>
-      ))}
-
-      {!isAdding && (
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setIsAdding(true)}
-          className="mt-4 px-6 py-3 bg-accent text-onPrimary rounded-full font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out"
-        >
-          Add New Address
-        </motion.button>
-      )}
-
+      <AddressGrid addresses={addresses} setIsAdding={setIsAdding}/> 
       {isAdding && (
         <form onSubmit={handleSubmit} className="mt-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -160,7 +141,7 @@ const AddressView = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="px-6 py-3 bg-accent text-onPrimary rounded-full font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out"
+              className="px-6 py-3 bg-onPrimary text-white rounded-md font-semibold hover:bg-opacity-90 transition duration-300 ease-in-out"
             >
               Save Address
             </motion.button>
@@ -169,7 +150,7 @@ const AddressView = () => {
               whileTap={{ scale: 0.95 }}
               type="button"
               onClick={() => setIsAdding(false)}
-              className="px-6 py-3 bg-surface text-onSurface rounded-full font-semibold border border-accent hover:bg-accent hover:text-onPrimary transition duration-300 ease-in-out"
+              className="px-6 py-3 bg-transparent text-onSurface rounded-md font-semibold border border-accent hover:bg-accent hover:text-onPrimary transition duration-300 ease-in-out"
             >
               Cancel
             </motion.button>
@@ -180,4 +161,4 @@ const AddressView = () => {
   );
 };
 
-export default AddressView;
+export default AddAddress;

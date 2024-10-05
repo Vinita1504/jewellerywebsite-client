@@ -43,9 +43,9 @@ const PersonalInfo = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {inputFields.map((field) => (
             <div key={field.name} className="relative">
-              <label htmlFor={field.name} className="block text-sm font-medium text-onSurfaceVariant mb-1">{field.label}</label>
+              <label htmlFor={field.name} className="block text-sm font-medium text-gray-500 mb-1">{field.label}</label>
               <div className="relative">
-                <field.icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-accent" />
+                <field.icon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-onPrimary" />
                 <input
                   type={field.type}
                   id={field.name}
@@ -53,14 +53,14 @@ const PersonalInfo = () => {
                   value={formData[field.name]}
                   onChange={handleChange}
                   disabled={!isEditing}
-                  className="pl-10 w-full p-3 bg-surfaceVariant text-onSurfaceVariant rounded-lg focus:ring-2 focus:ring-accent transition duration-300 ease-in-out"
+                  className="pl-10 w-full p-3 bg-white text-onSurface rounded-lg outline-none focus:ring-2 focus:ring-accent transition duration-300 ease-in-out"
                 />
               </div>
             </div>
           ))}
         </div>
         <div className="relative">
-          <label htmlFor="gender" className="block text-sm font-medium text-onSurfaceVariant mb-1">Gender</label>
+          <label htmlFor="gender" className="block text-sm font-medium text-gray-500 mb-1">Gender</label>
           <div className="relative">
             <FaVenusMars className="absolute left-3 top-1/2 transform -translate-y-1/2 text-accent" />
             <select
@@ -69,7 +69,7 @@ const PersonalInfo = () => {
               value={formData.gender}
               onChange={handleChange}
               disabled={!isEditing}
-              className="pl-10 w-full p-3 bg-surfaceVariant text-onSurfaceVariant rounded-lg focus:ring-2 focus:ring-accent transition duration-300 ease-in-out"
+              className="pl-10 w-full p-3 bg-white text-onSurface rounded-lg  outline-none focus:ring-2 focus:ring-accent transition duration-300 ease-in-out"
             >
               <option value="">Select Gender</option>
               <option value="male">Male</option>

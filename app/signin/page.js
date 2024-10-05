@@ -29,7 +29,7 @@ const Login = () => {
         {/* Login Form Section */}
         <div className="w-full md:w-1/2 p-8 md:p-12 bg-white">
           <img src={Logo.src} alt="Veliciae Logo" className="w-36 h-32 mx-auto mb-6" />
-          <h2 className="text-3xl font-semibold mb-6 text-[#bc8e56] text-center">Sign In</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-onPrimary text-center">Sign In</h2>
           <form className="space-y-4">
             <div className="flex">
               <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md">
@@ -44,7 +44,7 @@ const Login = () => {
             <div className="flex items-center">
               <input
                 type="checkbox"
-                className="w-4 h-4 text-[#bc8e56] bg-gray-100 border-gray-300 rounded focus:ring-[#bc8e56]"
+                className="w-4 h-4 text-onPrimary bg-gray-100 border-gray-300 rounded focus:ring-accent"
               />
               <label className="ml-2 text-sm font-medium text-gray-900">Remember me</label>
             </div>
@@ -52,7 +52,7 @@ const Login = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full bg-[#bc8e56] text-white p-3 rounded-md font-medium hover:bg-[#a47145] transition duration-300"
+              className="w-full bg-primary text-onPrimary p-3 rounded-md font-medium hover:bg-secondary transition duration-300"
             >
               Request OTP
             </motion.button>
@@ -67,14 +67,14 @@ const Login = () => {
             whileTap={{ scale: 0.95 }}
             className="w-full p-3 flex items-center justify-center bg-white border border-gray-300 rounded-md hover:shadow-md transition duration-300"
           >
-            <FaGoogle className="w-5 h-5 mr-2 text-[#bc8e56]" />
+            <FaGoogle className="w-5 h-5 mr-2 text-onPrimary" />
             Continue with Google
           </motion.button>
           <p className="mt-6 text-xs text-center text-gray-600">
-            By continuing, I agree to the <a href="#" className="text-[#bc8e56] hover:underline">Terms of Use</a> & <a href="#" className="text-[#bc8e56] hover:underline">Privacy Policy</a>.
+            By continuing, I agree to the <a href="#" className="text-onPrimary hover:underline">Terms of Use</a> & <a href="#" className="text-onPrimary hover:underline">Privacy Policy</a>.
           </p>
           <p className="mt-4 text-sm text-center">
-            Don't have an account? <a href="#" className="text-[#bc8e56] hover:underline">Sign up</a>
+            Don't have an account? <a href="#" className="text-secondary hover:underline">Sign up</a>
           </p>
         </div>
       </motion.div>

@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaPhone, FaCalendarAlt, FaEdit, FaShoppingBag, FaMapMarkerAlt, FaHeart, FaShoppingCart } from 'react-icons/fa';
 import PageHeader from '../Components/PageHeader';
 import PersonalInfo from '../Components/PersonalInfo';
-import AddressView from '../Components/AddressView.jsx';
-
+import AddAddress from '../Components/AddAddress.jsx';
+import MyOrder from '../Components/MyOrder.jsx';
+import { useRouter } from 'next/navigation';
 
 const MyProfile = () => {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState('personal');
-
- 
 
   const Orders = () => (
     <div>
@@ -38,11 +38,21 @@ const MyProfile = () => {
 
   const menuItems = [
     { icon: FaUser, text: 'Personal Information', section: 'personal', component: PersonalInfo },
-    { icon: FaShoppingBag, text: 'My Orders', section: 'orders', component: Orders },
-    { icon: FaMapMarkerAlt, text: 'My Address', section: 'address', component: AddressView},
+    { icon: FaShoppingBag, text: 'My Orders', section: 'orders', component: MyOrder },
+    { icon: FaMapMarkerAlt, text: 'My Address', section: 'address', component: AddAddress},
     { icon: FaHeart, text: 'Wishlist', section: 'wishlist', component: Wishlist },
     { icon: FaShoppingCart, text: 'My Cart', section: 'cart', component: Cart },
   ];
+
+  const handleMenuItemClick = (item) => {
+    if (item.section === 'wishlist') {
+      router.push('/wishlist');
+    } else if (item.section === 'cart') {
+      router.push('/add-to-cart');
+    } else {
+      setActiveSection(item.section);
+    }
+  };
 
   return (
     <motion.div 
@@ -58,18 +68,18 @@ const MyProfile = () => {
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="md:w-1/4 bg-surface p-6 rounded-lg shadow-xl"
+          className="md:w-1/4 bg-white p-6 rounded-lg shadow-sm"
         >
           <ul className="space-y-4">
             {menuItems.map((item, index) => (
               <li key={index}>
                 <button
-                  onClick={() => setActiveSection(item.section)}
+                  onClick={() => handleMenuItemClick(item)}
                   className={`w-full flex items-center p-3 rounded-lg transition duration-300 ${
-                    activeSection === item.section ? 'bg-accent text-onPrimary' : 'hover:bg-accent hover:bg-opacity-10'
+                    activeSection === item.section ? 'bg-accent text-onSurface' : 'hover:bg-accent hover:bg-opacity-10'
                   }`}
                 >
-                  <item.icon className="mr-3" />
+                  <item.icon className={`mr-3 ${activeSection === item.section ? 'text-purple-400' : 'text-onPrimary'}`} />
                   <span>{item.text}</span>
                 </button>
               </li>

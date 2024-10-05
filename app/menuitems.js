@@ -19,10 +19,7 @@ export const menuitems = [
         title: "My Orders",
         path: "/my-orders"
     },
-    {
-        title: "Order Details",
-        path: "/orders-details"
-    },
+    
     {
         title: "Checkout",
         path: "/checkout"
@@ -31,6 +28,12 @@ export const menuitems = [
         title: "My Profile",
         path: "/my-profile"
     },
+    { title:"Sign In",
+        path:"/signin"
+    },
+    { title:"Sign Up",
+        path:"/signup"
+    }
     
     
 
